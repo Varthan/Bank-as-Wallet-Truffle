@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>
+           Login
+        </title>
+       
+    </head>
+    <body>
+            
+        <form name="form" method="post">
+            
+           <table align=center>
+            <center>USER REGISTERATION FORM</center>
+
+
+            <input type="text" id="fn" name="user_first" placeholder="Enter your First name">
+
+            <input type="text" id="ln" name="user_last" placeholder="Enter your last name"> 
+ 
+          <input type="name" id="bnk" name="bnk_name" placeholder="Enter your Bank Name">
+  
+            <input type="email" id="mail" name="user_mail" placeholder="Enter your Email adress">
+                  
+          <input type="number" id="deposit" name="deposit" placeholder="Enter Initial Deposit Value">
+                 
+        
+         <input type="number" id="loan" name="loan" placeholder="Enter the Interest Value"></td><td>
+
+           <input type="number" id="fd" name="fd" placeholder="Enter the Interest Value"></td><td>
+          
+            
+               <input type="button"value="Register">
+              </div>   </td></tr>           
+            
+                    
+         </table>
+                
+           
+            
+       
+    </form>

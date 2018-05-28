@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" id="page">
+<head>
+<title>Bank As Wallet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="wid  th=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' type='text/css'>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+<script src="app.js"></script>
+<link href ="app.css" rel = "text/stylesheet">
+
+<style>
+  
+  /* Change the link color on hover */
+  li a:hover {
+      background-color: #555;
+      color: blueviolet;
+  }
+  </style>
+
+</head>
+<body >
+ <!-- preloading data --> 
+  
+    <nav class="contaner-fluid" >
+      <nav class="navbar navbar-default" id="account_details">
+        <div class="navbar-header" ><center>
+          <a class="navbar-brand" id="b_stack"><h3 class="text-primary"><span class="fa fa-bank"></span style="margin:auto;"><font color="white">Bank As Wallet</font></h3></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="account"><font color="white">  ACCOUNT NO</font>
+          <input type="text" placeholder ="Account" class="form-control" style ="height:40px;width:300px;"  id="account" readonly/></label>
+          <label for="balence"><font color="white">  BALANCE</font><input type="text" placeholder ="Balance" class="form-control" style ="height:40px;"  id="balance" readonly/></label>
+          <label for="bankName" ><font color="white">  BANK NAME</font><input type="text" placeholder ="BankName" class="form-control" style ="height:40px;" id="bankname" readonly/></label>
+          <label for="loanpending"><font color="white">LOAN DUE PENDING</font><input type="text"placeholder="Loan Due Pending" class="form-control" style ="height:40px;" id="lp" readonly/></label>
+          <label for="dueexpier"><font color="white">LOAN DUE EXPIER</font><input type="text" placeholder="Loan Due Expier" class="form-control" style ="height:40px;"id="de" readonly/></label>
+        </center></div>
+      </nav>
+    </nav>
+  
+
+<!--
+<ul class="nav navbar-nav navbar-right">
+<li id="b_stack"></li>
+<li><label for="account">Account No:<input type="text" placeholder ="Account" class="form-control" style ="height:40px;width:300px"  id="account" readonly/></label></li>
+<li><label for="balence">Balance:<input type="text" placeholder ="Balance" class="form-control" style ="height:40px;width:300px"  id="balance" readonly/></label></li>
+<li><label for="bankName">BankName:<input type="text" placeholder ="BankName" class="form-control" style ="height:40px;width:305px" id="bankname" readonly/></label></li>
+<li><label for="loanpending">Loan Due Pending:<input type="text"placeholder="Loan Due Pending" class="form-control" style ="height:40px;width:150px" id="lp" readonly/></label></li>
+<li><label for="dueexpier">Loan Due Expier<input type="text" placeholder="Loan Due Expier" class="form-control" style ="height:40px;width:150px"id="de" readonly/></label></li>
+</ul>
+<hr><br><br>
+-->
+
+<!-- Menu selector  <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
+<div class="container">
+  <div id="menu_bar">
+  <ul class="nav nav-justified">
+    <li class="active"><a data-toggle="tab"  href="#home"><span class="glyphicon glyphicon-home"></span>HOME</a></li>
+    <li><a data-toggle="tab"  id="link1"><span class="glyphicon glyphicon-user"></span>BANK PROCESS</a></li>
+    <li><a data-toggle="tab"  id="link2"><span class="glyphicon glyphicon-hand-down"></span>LOAN REQUEST</a></li>
+    <!-- <li><a data-toggle="tab" href="#menu3" id="link5">Loan Details</a></li>-->
+    <li><a data-toggle="tab"  id="link3"><span class="glyphicon glyphicon-hand-up"></span>LENDING LOAN</a></li>
+    <li><a data-toggle="tab"  id="link4"><span class="glyphicon glyphicon-tint"></span>FIXED DEPOSIT</a></li>
+    <!--<li><a data-toggle="tab" href="#menu6">Token Request</a></li>-->
+  </ul>
+  </div>
+
+
+
+<div class="tab-content">
+  
+  
+  <div id="home" class="tab-pane fade in active">
+
+    <center><div id="reg_bank" style="margin:20% auto;display:none"><br><br>
+        <h2><b>BANK REGISTERATON</b></h2><br>
+      <div><input type="text" id="bkname" style ="height:40px;width:300px" maxlength="30"onkeypress="return onlyAlphabets(event,this);" placeholder="Bank Name"/></div><br>
+      <div> <input type="text" id="loan-interest" placeholder="Loan Interest" style ="height:40px;width:300px"/></div><br>
+      <div> <input type="text" id="deposit-interest" placeholder="Fixed Deposit Interest" style ="height:40px;width:300px" /></div><br>
+      <!-- <div> <input type="text" id="interest" placeholder="Interest" style ="height:40px;width:300px" /></div><br><p id="output" style ="color:#A52A2A"></p> -->
+      <div ><input type="button" class="btn btn-primary" id="register-bank" style ="height:40px;width:300px;background:#0198E1" value="Register"/></div>
+      <div id="status"></div>
+    </div></center>
+      <!-- Deregister --> 
+      <br>
+      <div id="all_bank">
+        <div class="nav navbar-nav navbar-right"> 
+          <a href="#" class="btn btn-danger" id="de-register" style ="height:40px;width:190px;background: rgba(75, 10, 112, 0.829)	">DeRegister Your Account</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div id="dereg-status"></div>
+        </div><br>
+        <center><h1>WELCOME</h1></center>
+          <!-- Bank Details    class="col-sm-6"      -->  
+        <div  id="bank_list" class="table  table-striped table-bordered text-center scrollablemainpage"style="background:white"> </div>   
+      </div>
+    </div>  
+  <!-- Menu selector-->
+  <div id="menu1" class="tab-pane fade">
+    <div class="container-fluid"><br><br>;
+     <div id="menu1"><center>
+      <ul class="nav nav-justified bg-dark">
+        <li><a data-toggle="tab" href="#menu1-1">DEPOSIT</a></li>
+        <li><a data-toggle="tab" href="#menu1-2">WITHDRAW</a></li>
+        <li><a data-toggle="tab" href="#menu1-3">TRANSFER</a></li>
+        <li><a data-toggle="tab" href="#menu1-4">TOKEN</a></li></ul></div></div>
+        <div class="tab-content">
+    <div id="menu1-1" class="tab-pane fade "><center><form>
+      <h5><b>Deposit Amount</b></h5>
+      <div><input type="number" id="deposit-amount" min=0 onfocusout="App.set_max_val(id)" style ="height:40px;width:300px" placeholder="Deposit Amount (in Ether)" required /></div><p id="op1" style ="color:#A52A2A"></p><br>
+      <a href="#" class="btn btn-primary" id="deposit-bank" style="background:#0198E1">Deposit</a></form></center>
+      <div id="dep-status"></div>
+    </div>
+    <div id="menu1-2" class="tab-pane fade"><center><form>
+      <h5><b>Withdraw Amount</b></h5>
+      <div> <input type="number" id="withdraw-amount" min=0 onfocusout="App.set_max_val(id)" style ="height:40px;width:300px" placeholder="withdraw Amount (in Ether)" required /><p id="op2" style ="color:#A52A2A"></p></div><br>
+      <a href="#" class="btn btn-primary" id="withdraw"style="background:#0198E1">withdraw</a></form></center>
+      <div id="with-status"></div>
+    </div>
+    <div id="menu1-3" class="tab-pane fade"><center><form>
+      <h5><b>Transfer from</b></h5>
+      <div><input type="text" id="t" name="transfer"  style ="height:40px;width:300px"  placeholder="Address "required></div>
+      <br>
+      <div><input type="number" id="t1" min=0 onfocusout="App.set_max_val(id)" style ="height:40px;width:300px" placeholder="  Amount to be Transfered"required></div><br>
+      <p id="op3" style ="color:#A52A2A"></p>
+      <a href="#" class="btn btn-primary" id="transfer-amount"style="background:#0198E1">Transfer</a></form></center>
+      <div id="trans-status"></div>
+    </div>
+    <div id="menu1-4" class="tab-pane fade"><center><form>
+      <h5><b>Token Address</b></h5>
+      <div><input type="text" id="tokenadd"   style ="height:40px;width:300px" placeholder="Token Address"required><p id="op4" style ="color:#A52A2A"></p></div><br>
+      <a href="#" class="btn btn-primary" id="token-address"style="background:#0198E1">Token</a></form></center>
+      <div id="tok-status"></div>
+    </div>
+</div>
+</div>
+  <!--
+  <div id="menu1" class="tab-pane fade"style="height:750px"><center>
+<h3><b>BANK WALLET</b></h3>
+      <h5>Deposit Amount</h5>
+      <div><input type="text" id="deposit-amount"  style ="height:40px;width:300px" placeholder="Deposit Amount (in Ether)" required /></div><br>
+      <a href="#" class="btn btn-primary" id="deposit-bank" style="background:#0198E1">Deposit</a>
+      <br>   <br>
+      <h5>Withdraw Amount</h5>
+      <div> <input type="text" id="withdraw-amount"   style ="height:40px;width:300px" placeholder="withdraw Amount (in Ether)" required /></div><br>
+      <a href="#" class="btn btn-primary" id="withdraw"style="background:#0198E1">withdraw</a>
+      <br>   <br>
+      <h5>Transfer from</h5>
+      <div><input type="text" id="t" name="transfer"  style ="height:40px;width:300px"  placeholder="Address "required></div>
+      <br>
+      <div><input type="number" id="t1"   style ="height:40px;width:300px" placeholder="  Amount to be Transfered"required></div><br>
+      <a href="#" class="btn btn-primary" id="transfer-amount"style="background:#0198E1">Transfer</a>
+      <br><br>
+      <h5>Token Address</h5>
+      <div><input type="text" id="tokenadd"   style ="height:40px;width:300px" placeholder="Token Address"required></div><br>
+      <a href="#" class="btn btn-primary" id="token-address"style="background:#0198E1">Token</a>
+      <br><br>
+</center>
+  </div>
+-->
+
+
+  <!-- Loan request-->
+  
+   <div id="menu2" class="tab-pane fade" >
+<!--<div class="row"><thead><tr><th>    </th> </tr></thead></div>-->
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LOAN REQUEST</b></h3>
+      <!-- Bank Details    class="col-sm-6"      -->   
+    <div  id="bank_listcopy1" class="nav navbar-nav navbar-right scrollable"style="width:70%;background:white"> </div>  
+
+    <input type="text" id="tkn-address"  style ="height:40px;width:300px"  placeholder="Token Address" />
+    <br><br>
+    <input type="text" id="loan-address"  style ="height:40px;width:300px"  placeholder="Bank Address" />
+    <br><br>
+    <input type="number" id="token-count" min=0 style ="height:40px;width:300px" placeholder="Token Count" />
+    <br><br>
+    <input type="number" id="loan-time" min=0 style ="height:40px;width:300px" placeholder="Loan time (in yrs)" /><br><p id="op5" style ="color:#A52A2A"></p><br>
+    <a href="#" class="btn btn-primary"id="loan-bank" style ="height:40px;width:120px;background:#0198E1" value="Get Loan" onclick="App.get_loan();">Loan Request</a>
+    <div id="loan-status"></div>
+<!-- Loan Details--> 
+
+    <div class="nav navbar-nav navbar-right ">
+      <div class="wrapper">
+         
+             <center></center><div class="row "> <table><thead><tr> </tr></thead>
+        <thead><tr></div>  </tr></thead></table>
+              </div>
+         <br>
+        </div>
+        <hr></hr>
+       
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="Loan_id" min=0 placeholder="Loan ID"  style ="height:40px;width:300px"><p id="op7" style ="color:#A52A2A"></p></div><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a  href="#"  class="btn btn-primary" id="due-bank" style ="height:40px;width:120px;background:#0198E1" value="Pay Due" onclick="App.pay_due();" />Pay due </a><div id="due-status"></div><hr></hr>
+      
+        <div class="container  navbar-nav navbar-right scrollable" style="height:350px;background:white"> 
+          
+          <div class="row">
+                       
+            
+              <div class="col-sm-12" >
+                
+              <h2>BORROWING DETAILS </h2>
+               <h5 class="pulse"> *** If due is expired,penalty will be charged with current installment as 0.01Ξ ***</h5>                    <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Loan Id</th>
+                                <th>Bank Address</th>
+                                <th>Total Amount</th>
+                                <th>Settlement</th>
+                                <th>Next Settlement Time</th>
+                                <!-- <th>Next Settlement End Time</th> -->
+                                <th>Months</th>
+                                <th>Balance Loan</th>
+                                <th>Current Installment</th>
+                              </tr>
+                            </thead>
+                            <tbody id="get_loan_list">
+                               
+                            </tbody>
+                          </table>
+                        
+                        </form>
+                       
+                      </div>
+                    </div>  
+               
+              </div>
+          </div>
+  </div>
+  
+     <!-- Loan Details-->
+     
+   
+  <div id="menu5" class="tab-pane fade">
+      <div class="nav navbar-nav navbar-right" height="350px">
+         
+ 
+  <div class="col-sm-12"style="height:750px">
+     
+      <div class="container  navbar-nav navbar-right scrollable" style="height:750px;background:white"> 
+          &nbsp;&nbsp;&nbsp;<h3><b>LENDING DETAILS</b></h3>
+    <table class="table table-striped ">
+       
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Borrower Address</th>
+          <th>Token Address</th>
+          <th>Total Amount</th>
+          <th>Settlement Count</th>
+          <th>Next Settlement Time</th>
+          <th>Balance Loan</th>
+          <th>Months</th>
+          <!-- <th>Token</th> -->
+         </tr>
+      </thead>
+      <tbody id="loan_list">
+
+      </tbody>
+
+  </table>
+</div></div>
+
+
+
+  </div></div>
+
+  <!-- Fixed deposit-->
+  <div id="menu4" class="tab-pane fade"style="height:750px;">
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> FIXED DEPOSIT</b></h3>
+
+      <!-- Bank Details    class="col-sm-6"      -->
+      <div  id="bank_listcopy2" class="nav navbar-nav navbar-right scrollable"style="width:70%;background:white"> </div>
+
+       <!-- Fixed deposit inputs    class="col-sm-6"      -->
+
+       <input type="text" id="fixed-address" style ="height:40px;width:300px"  placeholder="Bank Address" />
+       <br><br>               
+       <input type="number" id="fixed-amount" min=0 onfocusout="App.set_max_val(id)" style ="height:40px;width:300px"  placeholder="Fixed fixed Amount (in Ether)" />
+       <br><br>
+       <input type="number" id="fixed-time" min=0 style ="height:40px;width:300px" placeholder="fixed Duration (in yrs)" />
+       <br><p id="op6" style ="color:#A52A2A"></p><br>
+       <button  onclick="App.fixed_loan();" class="btn btn-primary"  style ="height:40px;width:300px;background:#0198E1" id="loan-bank" value="Get Loan"/>Fixed Deposit Request </button>
+       <div id="fix-status"></div>
+       <!-- Fixed Deposit Details-->     
+       <hr></hr>
+        <div  id="bank_listcopy2" class="tabel table-fixed"> </div>
+<!-- fixed deposite owner settlement      -->
+         <div class="row" >
+          <div>
+
+
+                 <div class="col-sm-4">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="deposit-amount">Owner settlement</label>
+                  <div>
+                  <input type="text" id="user-fix-address" class="form-control" style ="height:40px;width:300px;border:1px solid black" placeholder="User Address" />
+                  <p id="op8" style ="color:#A52A2A"></p> </div>
+                  <input type="button" class="btn btn-primary" onclick="App.fix_set();"  style ="height:40px;width:300px;background:#0198E1" id="fix-bank-set" value="Settle Amount"/>
+                  <div id="fix-set-status"></div>
+                  </div>
+
+
+<!-- User request to withdraw    --> 
+
+                <div class="col-sm-8" align="right">
+                  <label for="Loan_id">User request to withdraw</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                  <!--<div class="form-group col-sm-8">-->
+                  <div>
+                  <input type="text" id="bank-fix-address" class="form-control" style ="height:40px;width:300px;border:1px solid black" placeholder="Bank Address" />
+                  </div><p id="op9" style ="color:#A52A2A"></p>
+                  <input type="button" class="btn btn-primary" onclick="App.fix_req();"  style ="height:40px;width:300px;background:#0198E1" id="fix-user-req" value="Get amount"/>
+                  <div id="fix-req-status"></div>
+                  </div>
+
+              </form>
+            </div>
+     
+             <div id="status"></div>
+      </div>
+
+
+           <center><label for="Loan_id"></label></center> 
+           <hr></hr>
+
+
+<!-- Fixed Deposit Details-->
+
+<div class=" navbar-nav navbar-center" style="width:50%">
+<div class="row">
+          <div class="col-md-8">              
+              <h2>My Client's Details</h2>
+          
+              <table class="table table-striped" style="background:white">
+               
+                <thead>
+                  <tr>
+                    <th>Bank Address</th>
+                    <th>Total Amount</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="fixed_list">
+
+                </tbody>
+            </table>
+          </div>
+        </div>
+   
+
+         </div>
+                
+ <!-- Fixed deposite my deposit details     -->
+           
+          <div class="col-md-6">
+      
+              <h2>My Deposit Details</h2>
+              <table class="table table-striped" style="background:white" >
+                  <thead>
+                    <tr> 
+                      <th>Bank Address</th>
+                      <th>Total Amount</th>
+                      <th>End Time</th>
+                      <th>Year</th>
+                      <th>Status</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody id="fixed_loan_list">
+                     
+                  </tbody>
+                </table>
+              </div>
+              </form>
+
+
+
+
+              
+
+
+
+
+    </div>
+
+
+    <!-- Token -->
+     <!--   <div id="menu5" class="tab-pane fade">
+ 
+      <h3>Token Request</h3>
+      <input type="text" id="token-address"  style ="height:40px;width:300px"  placeholder="Token Address" /><br><br>
+      <input type="text" id="bank-address"  style ="height:40px;width:300px"  placeholder="Bank Address" />
+     
+      <br><br>
+      
+      <input type="text" id="year"  style ="height:40px;width:300px" placeholder="Time Duration(in yrs)" /><br><br>
+      <input type="text" id="token-value"  style ="height:40px;width:300px" placeholder="Token Value" />
+      <br><br>
+      <a href="#" class="btn btn-primary"  id="token-bank" style ="height:40px;width:120px" value="Get Token" onclick="App.get_token();">Token Request</a>          
+      <div  id="token" class="nav navbar-nav navbar-right"> </div>     
+      <div class="row">
+          <div class="col-sm-15">
+           
+                <div class="col-sm-4">
+                  
+                    <h2>Token Lending  Details</h2>
+                
+                    <table class="table table-striped">
+                     
+                      <thead>
+                        <tr>
+                          <th>Bank Address</th>
+                          <th>Amount</th>
+                          <th>Year</th>
+                          <th>Tokens</th>
+                        </tr>
+                      </thead>
+                      <tbody id="token_list">
+
+                      </tbody>
+                  </table>
+                </div>
+               
+            
+                <div class="col-sm-8">
+            
+                    <h2>Token Borrowing  Details</h2>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                           
+                            <th>Token Address</th>
+                            <th>Ether</th>
+                            <th>Token value</th>
+                            <th>Year</th>
+                                                        
+                          </tr>
+                        </thead>
+                        <tbody id="get_token_list">
+                           
+                        </tbody>
+                      </table>
+                    
+                    </form>
+                   
+                  </div>
+                </div>  
+              </div>
+          </div>
+      </div>
+   
+    </div>
+
+
+
+
+
+    </div>-->
+
+
+</div>
+</div>
+
+<div class="spinner modal" id="loader" style="margin:9% auto">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+
+
+</body>
+
+<script language="Javascript" type="text/javascript">
+//only letters
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+
+        else if (e) {
+
+            var charCode = e.which;
+
+        }
+
+        else { return true; }
+
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+
+            return true;
+
+        else
+
+            return false;
+
+    }
+
+    catch (err) {
+
+        alert(err.Description);
+
+    }
+
+}
+//onlyonedecimalpoint
+function digitAndDotOnly(evt) {
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode != 32 && ((charCode >= 48 && charCode <= 57) 
+              || (charCode >= 96 && charCode <= 105)
+              || (charCode == 8 || charCode == 46 || charCode == 9 || charCode == 110)
+              || (charCode == 37 || charCode <= 39)
+              ))
+      return true;
+  else
+      return false;
+}
+</script>
+
+</html>
